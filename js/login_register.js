@@ -15,6 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const annulerenButtons = document.querySelectorAll('.annuleren');
+    annulerenButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'index.html';
+        });
+    });
+
     function setupPasswordToggle(toggleId, inputId, eyeOnId, eyeOffId) {
         const btn = document.getElementById(toggleId);
         const input = document.getElementById(inputId);
