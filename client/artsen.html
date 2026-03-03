@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Medixflow</title>
+    <link rel="stylesheet" href="/client/css/main.css">
+    <link rel="stylesheet" href="/client/css/artsen.css">
+    <link rel="icon" href="/client/img/logo1.PNG" type="image/png">
+  </head>
+
+  <body>
+  <header id="header">
+    <a href="/">
+    <img src="/client/svg/logo no bg.svg" class="logo" alt="Medixflow Logo"></a>
+    <nav class="nav">
+      <a class="nav-link" href="/client/index.html">Home</a>
+      <a class="nav-link" href="/client/afdelingen.html">Afdelingen</a>
+      <a class="nav-link" href="/client/artsen.html">Artsen</a>
+      <a class="nav-link" href="/client/contact.html">Contact</a>
+    </nav>
+    <div class="auth-buttons">
+    <a href="/client/login_register.html" class="btn btn-secondary">INLOGGEN</a>
+    </div>
+  </header>
+
+  <main class="artsen-page">
+        <section class="artsen-header">
+            <h1>Onze Artsen</h1>
+            <p>Bekijk onze artsen en maak eenvoudig een afspraak</p>
+
+            <div class="filter-controls">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Zoek een afdeling of arts...">
+                    <button class="search-btn" aria-label="Zoeken">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon">
+                    <path d="m21 21-4.34-4.34"/>
+                    <circle cx="11" cy="11" r="8"/>
+                    </svg>
+                    </button>
+                </div>
+            </div>
+
+        <section class="container">
+            <div class="artsen-grid" id="artsen-grid">
+                
+                <div class="arts-card">
+                    <div class="arts-afdeling-tag">Afdeling: Orthopedie</div>
+                    <div class="arts-image">
+                        <img src="https://placehold.co/150x300" alt="Dr. H. Sital">
+                    </div>
+                    <div class="arts-info">
+                        <h3>Dr. H. Sital</h3>
+                        <p>Orthopedisch Chirurg</p>
+                    </div>
+                    <button class="btn-afspraak">Afspraak maken</button>
+                </div>
+
+                <div class="arts-card">
+                    <div class="arts-afdeling-tag">Afdeling: Kindergeneeskunde</div>
+                    <div class="arts-image">
+                        <img src="https://placehold.co/150x300" alt="Dr. R. Tjon">
+                    </div>
+                    <div class="arts-info">
+                        <h3>Dr. R. Tjon</h3>
+                        <p>Kinderarts</p>
+                    </div>
+                    <button class="btn-afspraak">Afspraak maken</button>
+                </div>
+
+                <div class="arts-card">
+                    <div class="arts-afdeling-tag">Afdeling: Cardiologie</div>
+                    <div class="arts-image">
+                        <img src="https://placehold.co/150x300" alt="Dr. A. Soekhlal">
+                    </div>
+                    <div class="arts-info">
+                        <h3>Dr. A. Soekhlal</h3>
+                        <p>Cardioloog</p>
+                    </div>
+                    <button class="btn-afspraak">Afspraak maken</button>
+                </div>
+
+                <div class="arts-card">
+                    <div class="arts-afdeling-tag">Afdeling: Kaakchirurgie</div>
+                    <div class="arts-image">
+                        <img src="https://placehold.co/150x300" alt="Drs. F. Alexander">
+                    </div>
+                    <div class="arts-info">
+                        <h3>Drs. F. Alexander</h3>
+                        <p>Kaakchirurg</p>
+                    </div>
+                    <button class="btn-afspraak">Afspraak maken</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Medixflow. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+
+    <script src="/client/js/artsen-filter.js"></script>
+</body>
+</html>
