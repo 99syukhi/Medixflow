@@ -1,67 +1,70 @@
-console.log("Script geladen...");
+/**
+ * TOONT HET INLOGFORMULIER OP BASIS VAN DE ROL
+ */
+function showLoginForm(role) {
+    const roleSelection = document.getElementById('role-selection');
+    const subtitle = document.getElementById('form-subtitle');
+    const patientForm = document.getElementById('patient-form');
+    const adminForm = document.getElementById('admin-form');
 
-document.addEventListener('DOMContentLoaded', () => {
+    // Verberg de grid met rollen
+    roleSelection.style.display = 'none';
 
-    window.showForm = function() {
-        const loginSection = document.getElementById('login-section');
-        const registerSection = document.getElementById('register-section');
-
-        if (loginSection.style.display !== "none") {
-            loginSection.style.display = "none";
-            registerSection.style.display = "flex";
-        } else {
-            loginSection.style.display = "flex";
-            registerSection.style.display = "none";
-        }
-    };
-
-    const annulerenButtons = document.querySelectorAll('.annuleren');
-    annulerenButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'index.html';
-        });
-    });
-
-    function setupPasswordToggle(toggleId, inputId, eyeOnId, eyeOffId) {
-        const btn = document.getElementById(toggleId);
-        const input = document.getElementById(inputId);
-        const iconOn = document.getElementById(eyeOnId);
-        const iconOff = document.getElementById(eyeOffId);
-
-        if (btn && input) {
-            btn.addEventListener('click', () => {
-                const isPassword = input.type === 'password';
-                
-                input.type = isPassword ? 'text' : 'password';
-                
-                iconOn.style.display = isPassword ? 'block' : 'none';
-                iconOff.style.display = isPassword ? 'none' : 'block';
-            });
-        }
+    if (role === 'patient') {
+        patientForm.style.display = 'block';
+        subtitle.innerText = "Inloggen als Patiënt";
+    } else {
+        adminForm.style.display = 'block';
+        subtitle.innerText = "Inloggen Systeem (Administratie)";
     }
+}
 
-    setupPasswordToggle('togglePassword', 'wachtwoord', 'eye-on', 'eye-off');
+/**
+ * RESET DE LOGIN SECTIE NAAR DE ROLKEUZE
+ */
+function resetLogin() {
+    document.getElementById('patient-form').style.display = 'none';
+    document.getElementById('admin-form').style.display = 'none';
+    document.getElementById('role-selection').style.display = 'grid';
+    document.getElementById('form-subtitle').innerText = "Selecteer uw rol om verder te gaan";
+}
 
-    setupPasswordToggle('toggleReg', 'wachtwoord-reg', 'eye-on-reg', 'eye-off-reg');
+/**
+ * WISSELT TUSSEN LOGIN EN REGISTRATIE SECTIES
+ */
+function showForm(target) {
+    const loginSection = document.getElementById('login-section');
+    const registerSection = document.getElementById('register-section');
 
-    setupPasswordToggle('toggleConf', 'wachtwoord-conf', 'eye-on-conf', 'eye-off-conf');
-
-    const regPass = document.getElementById('wachtwoord-reg');
-    const confPass = document.getElementById('wachtwoord-conf');
-
-    if (regPass && confPass) {
-        const validatePasswords = () => {
-            if (confPass.value === "") {
-                confPass.style.borderColor = "#ccc"; 
-            } else if (regPass.value === confPass.value) {
-                confPass.style.borderColor = "#3A5B22";
-            } else {
-                confPass.style.borderColor = "#e74c3c";
-            }
-        };
-
-        regPass.addEventListener('input', validatePasswords);
-        confPass.addEventListener('input', validatePasswords);
+    if (target === 'register') {
+        loginSection.style.display = 'none';
+        registerSection.style.display = 'flex';
+    } else {
+        loginSection.style.display = 'flex';
+        registerSection.style.display = 'none';
+        resetLogin(); // Altijd terug naar de rolkeuze
     }
-});
+}
+
+/**
+ * TOGGLE WACHTWOORD ZICHTBAARHEID
+ * Werkt voor elk inputId dat wordt meegegeven
+ */
+function togglePasswordVisibility(inputId) {
+    const passwordInput = document.getElementById(inputId);
+    const wrapper = passwordInput.parentElement;
+    
+    // Selecteer de oog-iconen binnen de wrapper van dit specifieke veld
+    const eyeOff = wrapper.querySelector('.lucide-eye-off');
+    const eyeOn = wrapper.querySelector('.lucide-eye');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        if (eyeOff) eyeOff.style.display = 'none';
+        if (eyeOn) eyeOn.style.display = 'block';
+    } else {
+        passwordInput.type = 'password';
+        if (eyeOff) eyeOff.style.display = 'block';
+        if (eyeOn) eyeOn.style.display = 'none';
+    }
+}
